@@ -1,0 +1,33 @@
+{% extends 'master.html' %}
+
+{% block title %} OTS - Login Form  {% endblock title %}
+
+{% block top %}
+<!--<a href="{% url 'OTS:registrationForm' %}">Sign Up Free</a> -->
+{% endblock  %}
+{% block content %}
+ <div class="allforms">
+    {% if loginError %}
+     <div id="error">
+        {{loginError}}
+     </div>
+
+    {% endif %}
+    <form action="{% url 'OTS:login' %}" method="POST">
+       {% csrf_token %}
+       <div class="form-unit">
+        <label for="username">UserName</label>
+        <input type="text" name="username" required>
+       </div>
+       <div class="form-unit">
+        <label for="password">Password</label>
+        <input type="password" name="password" required>
+       </div>
+       <div class="form-unit">
+        <input type="submit" value="Login">
+        <input type="reset" value="Clear">
+       </div>
+    </form>
+   <div class="n1"></div>New User <a href="{% url 'OTS:registrationForm' %}"> Register Here</a></div>
+   </div>
+{% endblock  %}
